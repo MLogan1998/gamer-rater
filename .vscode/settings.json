@@ -6,5 +6,6 @@
       "name": "raterapi",
       "database": "db.sqlite3"
     }
-  ]
+  ],
+  "python.pythonPath": "/home/linuxbrew/.linuxbrew/opt/python@3.8/bin/python3.8"
 }
