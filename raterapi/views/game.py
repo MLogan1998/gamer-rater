@@ -4,7 +4,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet 
 from rest_framework.response import Response 
 from rest_framework import serializers 
-from raterapi.models import Game
+from raterapi.models import Game, Categories
 
 
 class Games(ViewSet):
@@ -43,8 +43,14 @@ class Games(ViewSet):
           games, many=True, context={'request': request})
         return Response(serializer.data)
 
+class CategoriesSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Categories
+        fields = '__all__'
+
 
 class GameSerializer(serializers.HyperlinkedModelSerializer):
+    categories = CategoriesSerializer(many=True)
 
     class Meta:
         model = Game
@@ -52,5 +58,5 @@ class GameSerializer(serializers.HyperlinkedModelSerializer):
             view_name='game',
             lookup_field='id'
         )
-        fields = ('id', 'url', 'title', 'designer', 'year_released', 'number_of_players', 'time_to_play', 'age')
+        fields = ('id', 'url', 'title', 'designer', 'year_released', 'number_of_players', 'time_to_play', 'age', 'categories')
         depth = 1
