@@ -18,6 +18,8 @@ class Games(ViewSet):
         game.number_of_players = request.data["numberOfPlayers"]
         game.time_to_play = request.data["timeToPlay"]
         game.age = request.data["age"]
+        categories = Categories.objects.get(pk=request.data["categoryId"])
+        game.categories.set(categories)
 
         try: 
             game.save()
