@@ -57,17 +57,14 @@ class ReviewSerializer(serializers.HyperlinkedModelSerializer):
             lookup_field='id'
         )
         fields = ('id', 'url', 'description')
-        # depth = 1
 
 class ReviewUserSerializer(serializers.ModelSerializer):
-    """JSON serializer for review player's related Django user"""
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email']
 
 
 class ReviewPlayerSerializer(serializers.ModelSerializer):
-    """JSON serializer for review player"""
     user = ReviewUserSerializer(many=False)
 
     class Meta:
@@ -75,7 +72,6 @@ class ReviewPlayerSerializer(serializers.ModelSerializer):
         fields = ['user', 'game_id', 'player_id']
 
 class GameSerializer(serializers.HyperlinkedModelSerializer):
-    """JSON serializer for games"""
     class Meta:
         model = Game
         fields = ('id', 'url', 'title', 'description', 'designer_id', 'year_released', 'number_of_players', 'est_time_to_play', 'age_recommendation', 'game_image')
