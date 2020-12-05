@@ -10,7 +10,7 @@ from raterapi.models import Game, Player, Reviews
 from raterapi.views.game import GameSerializer
 
 
-class Reviews(ViewSet):
+class ReviewsViewSet(ViewSet):
 
     def create(self, request):
         player = Player.objects.get(user=request.auth.user)
@@ -49,14 +49,10 @@ class Reviews(ViewSet):
 
 
 
-class ReviewSerializer(serializers.HyperlinkedModelSerializer):
+class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reviews
-        url = serializers.HyperlinkedIdentityField(
-            view_name='review',
-            lookup_field='id'
-        )
-        fields = ('id', 'url', 'description')
+        fields = ('id', 'review')
 
 class ReviewUserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -71,7 +67,7 @@ class ReviewPlayerSerializer(serializers.ModelSerializer):
         model = Player
         fields = ['user', 'game_id', 'player_id']
 
-class GameSerializer(serializers.HyperlinkedModelSerializer):
+class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
         fields = ('id', 'url', 'title', 'description', 'designer_id', 'year_released', 'number_of_players', 'est_time_to_play', 'age_recommendation', 'game_image')
