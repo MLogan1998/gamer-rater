@@ -1,0 +1,38 @@
+[
+  {
+      "model": "raterapi.reviews",
+      "pk": "1",
+      "fields": {
+          "review": "this game is great",
+          "player": 1,
+          "game": 1
+      }
+  },
+  {
+    "model": "raterapi.reviews",
+    "pk": "2",
+    "fields": {
+        "review": "this game is really great",
+        "player": 1,
+        "game": 2
+    }
+  },
+  {
+    "model": "raterapi.reviews",
+    "pk": "3",
+    "fields": {
+        "review": "this game is really really great",
+        "player": 1,
+        "game": 3
+    }
+  },
+  {
+    "model": "raterapi.reviews",
+    "pk": "4",
+    "fields": {
+        "review": "this is the best game ive ever played",
+        "player": 1,
+        "game": 3
+    }
+  }  
+]
