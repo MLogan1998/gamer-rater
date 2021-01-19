@@ -62,4 +62,4 @@ class GameSerializer(serializers.ModelSerializer):
             lookup_field='id'
         )
         fields = ('id', 'url', 'title', 'designer', 'year_released', 'number_of_players', 'time_to_play', 'age', 'categories', 'reviews', 'pictures', 'avg_rating')
-        depth = 2
+        depth = 3

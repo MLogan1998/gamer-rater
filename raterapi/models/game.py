@@ -18,7 +18,7 @@ class Game(models.Model):
         if len(ratings):
             sum_of_ratings = 0
             for rating in ratings:
-                sum_of_ratings += rating.value
+                sum_of_ratings += rating.rating
             avg = sum_of_ratings / len(ratings)
-            return avg
+            return round(float(avg), 1)
         return 30
