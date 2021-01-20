@@ -33,13 +33,14 @@ class Games(ModelViewSet):
 
     def get_queryset(self):
         search_text = self.request.query_params.get('q', None)
-        import pdb
-        pdb.set_trace()
+        # import pdb
+        # pdb.set_trace()
         if search_text is not None:
-            Game.objects.filter(
-                Q(title__contains=search_text) |
-                Q(description__contains=search_text) |
-                Q(designer__contains=search_text)
+            filterset = Game.objects.filter(
+                Q(title__icontains=search_text) |
+                Q(description__icontains=search_text) |
+                Q(designer__icontains=search_text)
             )
+            return filterset
         else:
             return self.queryset
