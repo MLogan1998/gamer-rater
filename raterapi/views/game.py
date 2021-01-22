@@ -31,6 +31,26 @@ class Games(ModelViewSet):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
 
+    def create(self, request):
+        game = Game()
+        game.title = request.data["title"]
+        game.description = request.data["description"]
+        game.designer = request.data["designer"]
+        game.year_released = request.data["yearReleased"]
+        game.number_of_players = request.data["numberOfPlayers"]
+        game.time_to_play = request.data["timeToPlay"]
+        game.age = request.data["age"]
+        categories = Categories.objects.get(pk=request.data["categoryId"])
+        
+
+        try: 
+            game.save()
+            game.categories.add(categories)
+            serializer = GameSerializer(game, context={'request': request})
+            return Response(serializer.data)
+        except ValidationError as ex:
+            return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
+
     def get_queryset(self):
         search_text = self.request.query_params.get('q', None)
         sort_option = self.request.query_params.get('orderby', None)

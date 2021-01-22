@@ -3,14 +3,14 @@
       "model": "raterapi.game",
       "pk": 1,
       "fields": {
-          "title": "Welcome To",
-          "designer": "Benoit Turpin",
-          "description": "This is a fun game.",
-          "year_released": "1999-01-01",
+          "title": "Monopoly",
+          "designer": "Hasboro",
+          "description": "Monopoly is a board game currently published by Hasbro.",
+          "year_released": "1935-01-01",
           "number_of_players": 4,
           "time_to_play": 3,
-          "age": 9,
-          "categories": [2,3]
+          "age": 8,
+          "categories": [1,2,3]
       }
   },
   {
@@ -20,11 +20,11 @@
           "title": "Settlers of Catan",
           "designer": "Klaus Teuber",
           "description": "This is a really fun game.",
-          "year_released": "2009-01-01",
+          "year_released": "1995-01-01",
           "number_of_players": 4,
           "time_to_play": 2,
           "age": 11,
-          "categories": [3,5]
+          "categories": [1]
       }
   },
   {
@@ -34,7 +34,7 @@
           "title": "Dungeons & Dragons",
           "designer": "Wizards of the Coast",
           "description": "This is a really really fun game.",
-          "year_released": "2019-01-01",
+          "year_released": "1974-01-01",
           "number_of_players": 5,
           "time_to_play": 7,
           "age": 19,
