@@ -3,7 +3,7 @@
       "model": "raterapi.reviews",
       "pk": "1",
       "fields": {
-          "review": "this game is great",
+          "review": "A lot of fun to play with your family!",
           "player": 1,
           "game": 1
       }
@@ -12,7 +12,7 @@
     "model": "raterapi.reviews",
     "pk": "2",
     "fields": {
-        "review": "this game is really great",
+        "review": "Always a great time.",
         "player": 1,
         "game": 2
     }
@@ -21,7 +21,7 @@
     "model": "raterapi.reviews",
     "pk": "3",
     "fields": {
-        "review": "this game is really really great",
+        "review": "A lot of strategy and creativity involved. Highly reccomend.",
         "player": 1,
         "game": 3
     }
@@ -30,7 +30,7 @@
     "model": "raterapi.reviews",
     "pk": "4",
     "fields": {
-        "review": "this is the best game ive ever played",
+        "review": "You will have an awesome time playing with friends!",
         "player": 1,
         "game": 3
     }
