@@ -172,3 +172,30 @@ class GameTests(APITestCase):
         self.assertEqual(json_response["rating"], 2)
         self.assertEqual(json_response["player"], 1)
         self.assertEqual(json_response["game"], 1)
+
+
+    def test_get_all_games(self):
+        for i in range(1):
+            game = Game()
+            game.title = "Dungeons and Dragons"
+            game.number_of_players = 4
+            game.time_to_play = 4
+            game.age = 13
+            game.designer = "Milton Bradley"
+            game.year_released = "1999-12-29"
+            game.description = "This is the best game of all time."
+            game.save()
+
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token)
+        response = self.client.get(f"/games")
+        json_response = json.loads(response.content)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        for i in range(1):
+            self.assertEqual(json_response["results"][i]["title"], "Dungeons and Dragons")
+            self.assertEqual(json_response["results"][i]["description"], "This is the best game of all time.")
+            self.assertEqual(json_response["results"][i]["designer"], "Milton Bradley")
+            self.assertEqual(json_response["results"][i]["year_released"], "1999-12-29")
+            self.assertEqual(json_response["results"][i]["time_to_play"], 4)
+            self.assertEqual(json_response["results"][i]["number_of_players"], 4)
+            self.assertEqual(json_response["results"][i]["age"], 13)
