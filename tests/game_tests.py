@@ -104,3 +104,27 @@ class GameTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         response = self.client.get(f"/games/{game.id}")
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+
+    def test_get_single_game(self):
+        game = Game()
+        game.title = "Dungeons and Dragons"
+        game.number_of_players = 4
+        game.time_to_play = 4
+        game.age = 13
+        game.designer = "Milton Bradley"
+        game.year_released = "1999-12-29"
+        game.description = "This is the best game of all time."
+        game.save()
+
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token)
+        response = self.client.get(f"/games/{game.id}")
+        json_response = json.loads(response.content)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(json_response["title"], "Dungeons and Dragons")
+        # self.assertEqual(json_response["description"], "a description")
+        self.assertEqual(json_response["designer"], "Milton Bradley")
+        self.assertEqual(json_response["year_released"], "1999-12-29")
+        self.assertEqual(json_response["time_to_play"], 4)
+        self.assertEqual(json_response["number_of_players"], 4)
+        self.assertEqual(json_response["age"], 13)
