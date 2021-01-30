@@ -52,7 +52,7 @@ class ReviewsViewSet(ViewSet):
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reviews
-        fields = ('id', 'review')
+        fields = ('id', 'review', 'player', 'game')
 
 class ReviewUserSerializer(serializers.ModelSerializer):
     class Meta:
