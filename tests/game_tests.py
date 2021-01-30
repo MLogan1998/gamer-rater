@@ -146,3 +146,29 @@ class GameTests(APITestCase):
         self.assertEqual(json_response["review"], "I really enjoyed this game")
         self.assertEqual(json_response["player"], 1)
         self.assertEqual(json_response["game"], 1)
+
+
+    def test_change_rating(self):
+        rating = Ratings()
+        rating.rating = 8
+        rating.player = Player.objects.get(pk=1)
+        rating.game = Game.objects.get(pk=1)
+        rating.save()
+
+        data = {
+          "rating": 2,
+          "player": 1,
+          "game": 1
+        }
+        
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token)
+        response = self.client.put(f"/rating/{rating.id}", data, format="json")
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        response = self.client.get(f"/rating/{rating.id}")
+        json_response = json.loads(response.content)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(json_response["rating"], 2)
+        self.assertEqual(json_response["player"], 1)
+        self.assertEqual(json_response["game"], 1)
