@@ -62,7 +62,7 @@ class GameTests(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(json_response["title"], "Clue")
-        # self.assertEqual(json_response["description"], "a description")
+        self.assertEqual(json_response["description"], "a description")
         self.assertEqual(json_response["designer"], "Milton Bradley")
         self.assertEqual(json_response["year_released"], "1999-12-29")
         self.assertEqual(json_response["time_to_play"], 5)
@@ -122,9 +122,27 @@ class GameTests(APITestCase):
         json_response = json.loads(response.content)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(json_response["title"], "Dungeons and Dragons")
-        # self.assertEqual(json_response["description"], "a description")
+        self.assertEqual(json_response["description"], "This is the best game of all time.")
         self.assertEqual(json_response["designer"], "Milton Bradley")
         self.assertEqual(json_response["year_released"], "1999-12-29")
         self.assertEqual(json_response["time_to_play"], 4)
         self.assertEqual(json_response["number_of_players"], 4)
         self.assertEqual(json_response["age"], 13)
+
+
+    def test_add_game_review(self):
+        url = "/reviews"
+        data = {
+          "review": "I really enjoyed this game",
+          "player": 1,
+          "gameId": 1
+        }
+
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token)
+        response = self.client.post(url, data, format='json')
+        json_response = json.loads(response.content)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(json_response["review"], "I really enjoyed this game")
+        self.assertEqual(json_response["player"], 1)
+        self.assertEqual(json_response["game"], 1)
