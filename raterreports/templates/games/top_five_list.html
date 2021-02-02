@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Top Five Games</title>
+  </head>
+  <body>
+    <h1 style="text-align: center;">Top Five Games By Average Rating</h1>
+    <div style="border: 2px solid black; width: 20%; margin: 0 auto; border-radius: 10px;">
+    {% for game in top_five_games %}
+    <ol>
+        <h2 style="color:red; margin-bottom: 0px">{{ game.title }}</h2> <h4 style="color:green; margin-top: 0px;">Average User Rating: {{game.rating}}</h4>
+    </ol>
+    {% endfor %}
+  </div>
+  </body>
+</html>
