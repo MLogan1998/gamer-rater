@@ -15,10 +15,10 @@
 
 
 -- /* CHILDREN UNDER 8 */
--- SELECT g.title title
--- FROM raterapi_game g
--- WHERE g.age < 8
+SELECT g.title title
+FROM raterapi_game g
+WHERE g.age < 8
 
 
-SELECT *
-FROM raterapi_game
+-- SELECT *
+-- FROM raterapi_game
