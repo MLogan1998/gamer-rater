@@ -1,6 +1,6 @@
 
 /* GAMES WITH MORE THAN 3 PLAYERS */
--- SELECT g.title title
+-- SELECT g.title title, g.id
 -- FROM raterapi_game g
 -- WHERE g.number_of_players > 3
 
@@ -18,3 +18,7 @@
 -- SELECT g.title title
 -- FROM raterapi_game g
 -- WHERE g.age < 8
+
+
+SELECT *
+FROM raterapi_game
