@@ -1,6 +1,5 @@
 import sqlite3
 from django.shortcuts import render
-# from raterapi.models import Game, Ratings
 from raterreports.views import Connection
 
 def more_than_three(request):

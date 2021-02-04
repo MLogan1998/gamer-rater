@@ -6,9 +6,9 @@
 
 
 /* WHAT IS THE MOST REVIEWED GAME? */
--- SELECT MAX(number_of_reviews) review_count, title 
+-- SELECT MAX(number_of_reviews) review_count, title, game_id
 -- FROM
--- (SELECT g.title title, COUNT(r.id) number_of_reviews
+-- (SELECT g.title title, COUNT(r.id) number_of_reviews, g.id game_id
 -- FROM raterapi_reviews r 
 -- JOIN raterapi_game g on g.id = r.game_id
 -- GROUP BY g.id )
