@@ -7,4 +7,21 @@
 
 ## Visit [GamerRater Front-End](https://github.com/MLogan1998/gamerraterclient) for project README.
 
+## Features:
+* REST API
+* API Integration Tests
+* HTML Reports with Django Templates
+
+## Technologies Used:
+* Python
+* Django REST Framework
+* Django Templates
+* SQL
+
+### Testing:
+![Integration Test](screenshots/djangotest.jpg)
+
+### Django Template Report:
+![Django Template](screenshots/report.jpg)
+
 ## Visit [My portfolio](https://logandevelopment.io)
