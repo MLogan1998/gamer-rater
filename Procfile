@@ -1,1 +1,1 @@
-web: gunicorn levelup.wsgi --log-file -
+web: gunicorn raterproject.wsgi --log-file -
